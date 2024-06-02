@@ -283,7 +283,7 @@ function selectAnswer(e) {
 
 function showScore() {
     resetState();
-    let percent = Math.floor(score / question1.length) * 100;
+    let percent = Math.floor((score / question1.length) * 100);
     questionElement.innerHTML = `You scored ${score} out of ${question1.length}!   Percentage of questions solved : ${percent}%`;
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
