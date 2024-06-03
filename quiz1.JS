@@ -199,8 +199,6 @@ const question = [
     },
 ];
 
-const quizes = ["MATHEMATICS QUIZ","SCIENCE QUIZ","GENERAL KNOWLEDGE QUIZ"];
-
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
@@ -214,6 +212,7 @@ const science = document.getElementById("science")
 const gk = document.getElementById("gk")
 const quizSelection = document.getElementById("quiz-selection");
 const searchInput = document.getElementById("searchInput");
+const quizType = document.getElementById("quizType");
 
 
 let currentQuestionIndex = 0;
@@ -225,6 +224,7 @@ let question1 = [];
 function changeDisplay() {
     container.style.display = "flex";
     document.getElementById("start").style.display = "none";
+    document.getElementById("status").style.display = "flex";
     startQuiz();
 }
 
@@ -328,43 +328,48 @@ function resetTimer(){
 random.addEventListener("click", ()=> {
     question1 = question.map(item => item);
     shuffleArray(question1);
+    quizType.innerHTML = "Random Quiz";
     changeDisplay();
 })
 
 easy.addEventListener("click", ()=> {
     question1 = question.filter(item => item.difficulty === 1);
     shuffleArray(question1);
+    quizType.innerHTML = "EASY Quiz";
     changeDisplay();
 })
 
 medium.addEventListener("click", ()=> {
     question1 = question.filter(item => item.difficulty === 2);
     shuffleArray(question1);
+    quizType.innerHTML = "MEDIUM Quiz";
     changeDisplay();
 })
 
 hard.addEventListener("click", ()=> {
     question1 = question.filter(item => item.difficulty === 3);
     shuffleArray(question1);
+    quizType.innerHTML = "HARD Quiz";
     changeDisplay();
 })
 
 math.addEventListener("click", ()=> {
     question1 = question.filter(item => item.subject === "Maths");
-    console.log(question1)
+    quizType.innerHTML = "MATHEMATICS Quiz";
     if(confirm("Join MATHS Quiz"))
     changeDisplay();
 })
 
 gk.addEventListener("click", ()=> {
     question1 = question.filter(item => item.subject === "generalKnowledge");
-    console.log(question1)
+    quizType.innerHTML = "GENERAL KNOWLEDGE Quiz";
     if(confirm("Join General Knowledge Quiz"))
     changeDisplay();
 })
 
 science.addEventListener("click", ()=> {
     question1 = question.filter(item => item.subject === "Science");
+    quizType.innerHTML = "SCIENCE Quiz";
     if(confirm("Join Science Quiz"))
         changeDisplay();
 })
@@ -386,36 +391,34 @@ searchInput.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
       event.preventDefault();
       const textSearch = searchInput.value.trim().toLowerCase();
-      console.log(textSearch)
       if (textSearch) {
         handleSearch(textSearch);
       }
     }
   });
   
-  function handleSearch(textSearch) {
+function handleSearch(textSearch) {
     const availableQuizzes = ["maths", "general knowledge","science"];
     if (availableQuizzes.includes(textSearch)) {
       alert("Quiz found.\nEnter Quiz");
       if(textSearch === "maths")
         {question1 = question.filter(item => item.subject === "Maths");
-        changeDisplay();
+      quizType.innerHTML = "MATHEMATICS Quiz"; 
+      changeDisplay();
     }
       else if(textSearch === "science") 
            { question1 = question.filter(item => item.subject === "Science");
+      quizType.innerHTML = "SCIENCE Quiz";
             changeDisplay();
         }
         else 
                { question1 = question.filter(item => item.subject === "generalKnowledge");
-                changeDisplay();
+               quizType.innerHTML = "GENERAL KNOWLEDGE Quiz";
+               changeDisplay();
             }
 }
  else {
       alert("Quiz not found. Please check for typo");
     }
   }
-
-
-
-
 
