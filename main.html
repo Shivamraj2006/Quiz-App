@@ -24,11 +24,12 @@
         <!-- Search -->
         <div class="search">
                 <input type="text" id="searchInput" placeholder="Enter QUIZ name..">
+                <button id="voiceSearchButton">Voice Search</button>
            </div>
         </nav>
 
         <!--STATUS BAR-->
-        <div class="status">
+        <div id="status">
         <button onclick="reloadPage()" id="home"> HOME </button>
         <div class="timer">Time Elapsed: <span id="timer">00:00</span></div>
         </div>
@@ -47,9 +48,8 @@
         <div id="container">
 
         <!--QUIZ-->
-
         <div class="app">
-            <h1>Simple Quiz</h1>
+            <h1 id="quizType">Simple Quiz</h1>
             <div class="quiz">
                 <h2 id="question">Question goes here</h2>
                 <div id="answer-buttons">
@@ -57,15 +57,15 @@
                     <button class="btn">Answer 2</button>
                     <button class="btn">Answer 3</button>
                     <button class="btn">Answer 4</button>
-                </div>
+                </div class=next-exit>
                 <button id="next-btn">Next Button</button>
+                <button onclick="reloadPage()"" id="exit-btn"> Exit </button>
             </div>
         </div>
         <script src="quiz1.JS"></script>
         
 
         <!--CALCULATOR-->
-
         <div class="calculator">
             <div class="screen">
               <div class="screen-last" id="lastOperationScreen"></div>
@@ -96,8 +96,6 @@
               <button class="btns" onclick="this.blur();" data-operator>+</button>
             </div>
           </div>
-
-
         </div>
         <script src="calculator.JS" defer></script>
     </body>
